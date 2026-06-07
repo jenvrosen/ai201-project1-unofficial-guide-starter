@@ -9,7 +9,7 @@
 
 ## Domain
 
-<!-- What domain did you choose? Why is this knowledge valuable and hard to find through official channels? -->
+<!-- This domain covers endometriosis-specific nutrition and dietary strategies for reducing inflammation, pain, and symptom flares. It is hard to find because the evidence is fragmented across clinical handouts, research articles, patient forums, and advocacy sites, while mainstream medical guidance tends to emphasize surgery and pharmaceuticals over diet. -->
 
 ---
 
@@ -20,16 +20,19 @@
 
 | # | Source | Description | URL or location |
 |---|--------|-------------|-----------------|
-| 1 | | | |
-| 2 | | | |
-| 3 | | | |
-| 4 | | | |
-| 5 | | | |
-| 6 | | | |
-| 7 | | | |
-| 8 | | | |
-| 9 | | | |
-| 10 | | | |
+| 1 | SSM Health | Endometriosis diet booklet from a clinical women's health provider | https://www.ssmhealth.com/SSMHealth/media/Documents/slucare/services/obstetrics-gynecology-womens-health/endometriosis-diet-booklet.pdf |
+| 2 | Cleveland Clinic | Patient-facing overview of diet strategies for endometriosis | https://health.clevelandclinic.org/endometriosis-diet |
+| 3 | NCBI PMC | Peer-reviewed article on diet and endometriosis management | https://pmc.ncbi.nlm.nih.gov/articles/PMC9983692/ |
+| 4 | Endometriosis Association | Foods to eat and avoid for people with endometriosis | https://endometriosisassn.org/endometriosis-diet-foods-to-eat-and-avoid/ |
+| 5 | BC Women's Centre | Pelvic pain and endometriosis diet handout PDF | https://www.bcwomens.ca/Gynecology-Site/Documents/Pelvic%20Pain-Endo/2015Nov_CPP-diet-handout.pdf |
+| 6 | Endometriosis UK | Complementary therapy diet booklet for endometriosis | https://www.endometriosis-uk.org/sites/default/files/2025-11/Endometriosis-CompTherapy-16pp-v4.pdf |
+| 7 | Reddit r/Endo | Personal report of a diet that resolved endometriosis symptoms | https://www.reddit.com/r/Endo/comments/tw0ovy/diet_that_resolved_my_endometriosis/ |
+| 8 | Reddit r/endometriosis | Community discussion of endometriosis diets | https://www.reddit.com/r/endometriosis/comments/1blralx/endo_diets/ |
+| 9 | Reddit r/endometriosis | Personal experience of diet reducing endo pain | https://www.reddit.com/r/endometriosis/comments/1my1mfe/my_diet_has_reduced_my_endo_pain_more_than/ |
+| 10 | Reddit r/endometriosis | Discussion of anti-inflammatory diet approaches | https://www.reddit.com/r/endometriosis/comments/1qsgi3n/whats_everyones_go_to_anti_inflammatory/ |
+| 11 | Endometriosis Foundation | Diet and lifestyle recommendations from an advocacy foundation | https://www.theendometriosisfoundation.org/diet-and-lifestyle |
+| 12 | PCRM Nutrition Guide | Clinician-facing nutrition guide for endometriosis | https://nutritionguide.pcrm.org/nutritionguide/view/Nutrition_Guide_for_Clinicians/1342065/all/Endometriosis |
+| 13 | Healthline | Consumer article on endometriosis diet and foods to consider | https://www.healthline.com/health/endometriosis/endometriosis-diet |
 
 ---
 
@@ -40,11 +43,12 @@
      numbers fit the structure of your documents.
      A review-heavy corpus warrants different chunking than a long FAQ. -->
 
-**Chunk size:**
+**Chunk size:** 2,500 characters
 
-**Overlap:**
+**Overlap:** 500 characters
 
 **Reasoning:**
+Guides including PDFs, clinical handouts, article pages, and forum posts with varied length and structure. A fixed-size chunk of 2,500 characters keeps segments large enough to capture complete paragraphs and dietary recommendations while still producing enough chunks for retrieval. The 500-character overlap preserves sentence continuity across chunk boundaries, which is important for capturing recommendations and nuanced diet guidance that can span multiple sentences. This fixed character-based approach also simplifies implementation across mixed formats, especially when the text is extracted from PDFs and web pages.
 
 ---
 
@@ -56,11 +60,12 @@
      would you weigh in choosing a different embedding model — context length, multilingual
      support, accuracy on domain-specific text, latency? -->
 
-**Embedding model:**
+**Embedding model:** all-MiniLM-L6-v2 via sentence-transformers
 
-**Top-k:**
+**Top-k:** 6
 
 **Production tradeoff reflection:**
+all-MiniLM-L6-v2 is a fast, cost-effective embedding model with strong semantic relevance for mixed web and PDF text. If cost were not a constraint, I would consider a larger model with better domain accuracy and longer context support to improve retrieval quality for medical and nutrition terminology, while balancing latency and inference cost for user-facing queries.
 
 ---
 
@@ -73,11 +78,11 @@
 
 | # | Question | Expected answer |
 |---|----------|-----------------|
-| 1 | | |
-| 2 | | |
-| 3 | | |
-| 4 | | |
-| 5 | | |
+| 1 | What are the most consistently recommended foods to avoid for endometriosis across the sources? | Anti-inflammatory sources recommend avoiding red meat, processed foods, refined sugar, and high-fat dairy. |
+| 2 | Which foods or nutrients are repeatedly suggested as beneficial for managing endometriosis symptoms? | Sources repeatedly suggest omega-3 rich fish, leafy greens, whole grains, fruits, vegetables, and anti-inflammatory spices such as turmeric. |
+| 3 | What role does a low-inflammatory diet play in endometriosis management according to the clinical handouts and research article? | It is recommended as a complementary strategy to reduce pain and symptom flares, not as a cure, by lowering systemic inflammation and stabilizing hormone-related responses. |
+| 4 | What type of evidence is represented by the Reddit sources compared to the clinical handouts and research article? | Reddit sources provide personal experiences and anecdotal diet reports, while clinical handouts and the research article provide evidence-based guidelines and peer-reviewed findings. |
+| 5 | How should the system answer if a question asks for medical advice beyond the documents? | It should state that it is not a replacement for professional medical advice and encourage consulting a healthcare provider, while summarizing relevant registered document recommendations. |
 
 ---
 
@@ -87,9 +92,9 @@
      Consider: noisy or inconsistent documents, missing source attribution, off-topic
      retrieval, chunks that split key information across boundaries. -->
 
-1.
+1. Document noise and format inconsistency: PDFs, web pages, and Reddit posts may extract into text with broken line breaks, headers, and stray markup, which can reduce embedding quality and lead to less accurate retrieval.
 
-2.
+2. Mixed evidence quality and source attribution: Clinical handouts and peer-reviewed research are higher-quality than anecdotal Reddit posts, so the system may over-emphasize personal experiences unless retrieval and prompt design explicitly preserve source context and caveats.
 
 ---
 
