@@ -1,0 +1,78 @@
+Source: PCRM Nutrition Guide for Clinicians — Endometriosis
+URL: https://nutritionguide.pcrm.org/nutritionguide/view/Nutrition_Guide_for_Clinicians/1342065/all/Endometriosis
+
+# Endometriosis — Nutrition Guide for Clinicians
+
+Endometriosis is a chronic, estrogen-dependent inflammatory condition in which implants of endometrial tissue appear outside the uterus, usually within the pelvis. It is a frequent cause of dysmenorrhea and pelvic pain, and it may cause infertility. The pathogenesis is thought to be associated with retrograde menstruation, in which menstrual tissue flows through the fallopian tubes and into the pelvic and abdominal peritoneum. Other hypotheses have suggested that the condition may result from transport of cells through blood or lymph to distant locations, differentiation of peritoneal cells to become endometrial cells, or, in some cases, displacement of endometrial tissue through surgical processes (e.g., cesarean section, episiotomy).
+
+Endometriosis is a condition of reproductive age and is largely dependent upon active menstruation. The disease rarely occurs prior to menarche or after menopause. The most commonly involved locations are the peritoneal surface of the ovaries, the anterior and posterior cul-de-sac, and the uterosacral and cardinal ligament. In the gastrointestinal tract, the sigmoid colon and the appendix are most commonly affected. Other sites of involvement may include the abdominal wall, vagina, vulva, diaphragm, bladder, ureter, and thorax.
+
+The severity of the condition varies greatly; it can be asymptomatic or severe, and even debilitating. Symptoms are often nonspecific and do not always correlate with the severity of disease. Common symptoms include pelvic, abdominal, or lower back pain occurring in the premenstrual or perimenstrual period; abnormal uterine bleeding; dyspareunia; and infertility. Further symptoms occur based on the location of ectopic endometrial tissue (e.g., rectal bleeding or pain with defecation if colonic lesions are present, suprapubic pain upon urination if bladder lesions are present). Thoracic endometriosis may present with chest pain, hemothorax, and scapula, or cervical neck pain. Many women with endometriosis have no symptoms, and some women with severe pain have minimal visible endometriosis, suggesting that the body’s response to the implants may be more important than the presence of the implants themselves.
+
+## Risk Factors
+
+The risk factors for endometriosis are not well understood. It is most commonly diagnosed in women in their late 20s and early 30s. Other associated factors include nulliparity, early menarche or late menopause, short menstrual cycles, prolonged menses, and Müllerian anomalies. Conversely, multiparity, long lactation periods, and late menarche (after age 14 years) seem to decrease the risk.[1]
+
+Some evidence suggests that the gut and pelvic microbiomes are associated with the inflammatory and immunologic pathogenesis of endometriosis.[2][3] Dietary factors may play a role and are discussed in Nutritional Considerations below.
+
+## Diagnosis
+
+Endometriosis is usually suspected from the patient’s history. Tender nodules and masses may be palpable or visible on the vagina or cervix during pelvic examination. However, a normal examination does not exclude the disease.
+
+Pelvic ultrasound may be helpful and is typically indicated in the evaluation of undifferentiated pelvic pain. Visualization of an ovarian endometrioma on ultrasound can be diagnostic. Magnetic resonance imaging can identify endometriosis lesions with similar sensitivity and specificity as pelvic ultrasound. It is reserved in cases where there is concern for bowel involvement and for surgical planning.[4] Endoscopy of the colon or cystoscopy of the bladder may be necessary if deep-seated implants are suspected in these organs or there is blood in the stool.
+
+Laparoscopy with tissue biopsy and histology showing endometrial glands and stroma is the preferred method diagnosing endometriosis. Visual identification of endometriosis without biopsy is of limited value. The accuracy of visual identification is influenced by the extent of the disease, the location of the implants, and the surgeon’s expertise. Endometrial implants may appear in various colors (black, red, yellow, white, blue, or clear). Endometriosis may be present without apparent visible lesions due to occult microscopic implants.[5]
+
+In some cases, history and physical examination that exclude other likely diagnoses are enough to justify the initiation of low-risk treatment (NSAIDs, oral contraceptives). However, response to treatment should not be taken as confirmation of diagnosis. If treatment options are considered that carry more than minimal risk, laparoscopic visualization is recommended.
+
+Elevated serum CA-125 concentration suggests the presence of the condition (but is not specific), and higher values may correspond with advanced disease. This test is not typically used for the evaluation of endometriosis in clinical practice.
+
+## Treatment
+
+Treatment aims to address pelvic pain, pelvic mass, or infertility. The treatment strategy depends upon the severity and extent of disease, proximity to menopause, and whether the patient hopes to become pregnant. After menopause, symptoms will likely improve dramatically, even in severe disease.
+
+Watchful waiting is always an option for minimally symptomatic patients or patients who wish to avoid more risky treatment options.
+
+For mild to moderate pain, analgesics (e.g., NSAIDs) and hormonal contraceptive regimens can be used. Oral combined (estrogen plus progesterone) contraceptives may also reduce the risk of ovarian and endometrial cancer, a diagnosis associated with endometriosis, although their use is associated with a small increase in breast cancer risk.[6][7]
+
+Gonadotropin-releasing hormone (GnRH) analogs, GnRH antagonists (elagolix), danazol, or progestins (e.g., etonogestrel implant, intrauterine levonorgestrel, norethindrone acetate, drospirenone) may be very helpful, particularly in severe cases. GnRH analogs (e.g., leuprolide injections, goserelin) and GnRH antagonists decrease ovarian estrogen production, preventing the pain-inducing stimulation of ectopic endometrial tissue. GnRH agonist treatment is FDA approved for 12 months. GnRH antagonists are given as a pill (Orlissa) and has similar side effects as GnRH agonists. A 2-year maximum use for GnRH antagonists is recommended.[8] GnRH analogs and antagonists cause a decrease in bone density, which is of uncertain clinical significance. Bone loss has also been associated with the use of medroxyprogesterone acetate, a long-acting progestin. This is likely reversible with cessation of medication and return of ovulatory function. Supplemental estrogen or norethindrone acetate may minimize the side effects of bone mineral loss and other hypoestrogenic side effects, such as hot flashes.
+
+Aromatase inhibitors are reserved for severe, refractory endometriosis-related pain.
+
+Medical therapy affords some relief in 80-90% of patients, but does not address cases complicated by pelvic masses or adhesions, nor does it improve fertility. Surgery is often used for severe disease or complicated cases. Conservative surgical intervention includes ablation or excision of endometrial implants and adhesions, treating the pain and restoring fertility. Recurrence of symptoms is relatively common with conservative surgery but less so with definitive surgical intervention. Definitive treatment consists of total abdominal hysterectomy with bilateral salpingo-oophorectomy; however, most patients can be managed effectively without such extreme measures.
+
+Exercise. Observational data suggest a decreased incidence of endometriosis in women who exercise regularly with sufficient intensity.[9] Moreover, exercise appears to significantly improve pain in women with dysmenorrhea, a finding that can likely be applied to those with endometriosis.[10] An exercise prescription for endometriosis can be patterned after that used to reduce the risk of breast cancer: 5 hours per week of moderate workouts or 2.5 hours per week of vigorous workouts.
+
+Psychotherapy and somatosensory stimulation (different techniques of acupuncture point stimulation) have been shown to reduce pain and improve quality of life in endometriosis patients.[11]
+
+## Nutritional Considerations
+
+Endometriosis is an estrogen-dependent disorder.[6] Diets that are low in fat, high in fiber, or both are associated with lower levels of circulating estradiol and higher levels of sex hormone-binding globulin (SHBG).[12] In clinical trials, low fat intake and increased fiber intake reduce blood estrogen concentrations and increase SHBG concentration (thereby reducing estrogen activity).[13][14][15] The effect of fiber is attributable to its ability to interrupt the enterohepatic circulation of hormones, such that a portion of the hormone load is excreted with the feces. The mechanism by which higher fat intake increases estrogen concentrations is not known.
+
+The higher fiber content of plant-based diets can also lower blood insulin levels.[16] This is important because of insulin’s agonistic effects on estrogen production and endometrial cell proliferation. Some studies have suggested that oxidative stress may also contribute to the disease process, providing a rationale for antioxidant-rich diets (those emphasizing vegetables and fruits).
+
+These observations help explain a finding in case-control studies, in which frequent red meat consumption is associated with endometriosis risk, while fruit and vegetable intake appears to be protective. In an Italian population including 504 cases and an equal number of matched controls, women who ate at least 7 servings of red meat per week had twice the risk of endometriosis compared with those who ate fewer than 3 servings of red meat weekly. Women having 13 or more servings per week of green vegetables had a 70% lower risk of endometriosis compared with those who ate fewer than 6 servings per week. Those eating 14 or more servings of fruit per week had a 20% lower risk, compared with women having fewer than 6 servings per week.[17]
+
+In the prospective Nurses’ Health Study II, 81,908 premenopausal women’s diets were tracked, and those consuming more than 2 servings per day of red meat had a 56% higher risk of endometriosis, compared with those consuming less than or equal to 1 serving per week. Women who consumed the most processed red meat (5 or more servings per week) also had a 20% higher risk of endometriosis compared with those who ate less than one serving per month.[18] Within the same study, researchers found an inverse relationship between fruit consumption and endometriosis risk. Specifically, those consuming one or more servings of citrus fruits per day had a 22% reduced risk for the disease, compared with those consuming less than 1 serving per week.[19]
+
+The weight loss that typically results from a low-fat (especially vegan) diet also contributes to reductions in circulating estrogen concentrations, as body fat converts androgens to estrogens. In addition, endometrial tissue can convert cholesterol to estradiol, raising concerns about elevated plasma cholesterol levels and the food components (saturated fat and dietary cholesterol) that tend to increase plasma cholesterol levels.[20]
+
+Some have suggested a role for seaweed in reducing endometriosis symptoms as a result of its estrogen-modulating properties.[21][22]
+
+Overall, these findings suggest the value of a low-fat, plant-based diet as a means of maximizing fiber and antioxidants and minimizing fat, saturated fat, and cholesterol. Such a diet has proven efficacy for functional dysmenorrhea (see Dysmenorrhea chapter) but has not yet been tested for endometriosis.
+
+Avoiding alcohol. Some evidence suggests that greater alcohol intake may be associated with increased risk of endometriosis.[23] The suspected mechanism is alcohol’s tendency to increase both estrogen levels and oxidative stress.
+
+## Orders
+
+Low-fat, high-fiber, vegan diet.
+
+Regular physical activity consisting of 5 hours per week of moderate workouts or 2.5 hours per week of vigorous workouts.
+
+Avoid alcohol.
+
+## What to Tell the Family
+
+Endometriosis is a painful disorder that often responds to available medical therapies. A strong rationale exists for the use of a low-fat, vegan diet. Such a diet has been shown to be helpful for primary dysmenorrhea but has not been tested for endometriosis. Regular exercise may improve symptoms. Alcohol consumption should be minimized. To the extent that patients seek to make lifestyle changes, family members can help by supporting these changes.
+
+## References

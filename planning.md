@@ -43,12 +43,14 @@
      numbers fit the structure of your documents.
      A review-heavy corpus warrants different chunking than a long FAQ. -->
 
-**Chunk size:** 2,500 characters
+**Chunk size:** 1,000 characters
 
-**Overlap:** 500 characters
+**Overlap:** 200 characters
+
+**Final chunk count:** 259 chunks across 13 documents
 
 **Reasoning:**
-Guides including PDFs, clinical handouts, article pages, and forum posts with varied length and structure. A fixed-size chunk of 2,500 characters keeps segments large enough to capture complete paragraphs and dietary recommendations while still producing enough chunks for retrieval. The 500-character overlap preserves sentence continuity across chunk boundaries, which is important for capturing recommendations and nuanced diet guidance that can span multiple sentences. This fixed character-based approach also simplifies implementation across mixed formats, especially when the text is extracted from PDFs and web pages.
+The corpus mixes PDFs, clinical handouts, article pages, and forum threads of varied length and structure. I use recursive (boundary-aware) character chunking: it fills chunks up to a target size, then recursively falls back through a hierarchy of separators (paragraph break, then sentence end, then line break) to cut at the nearest natural boundary so each chunk ends on a complete thought instead of mid-word. This is not semantic chunking — break points come from the text's structure, not its meaning. I sized chunks to fit the embedding model: `all-MiniLM-L6-v2` (Retrieval Approach below) truncates input at 256 tokens, roughly 1,000–1,200 characters. A ~1,000-character chunk therefore fits inside that window and is embedded in full — a larger chunk (e.g., 2,500 characters) would be silently truncated, so more than half of each chunk would never reach the vector. The 200-character overlap (a 20% stride, snapped to a boundary) preserves sentence and recommendation continuity across chunk edges, so dietary guidance that spans the end of one chunk and the start of the next is still retrievable. Light preprocessing removes the per-file `Source:`/`URL:` header (kept as metadata for attribution), strips decorative separator rules from the Reddit exports, and collapses the blank-line/whitespace artifacts left over from PDF extraction before chunking.
 
 ---
 
@@ -62,7 +64,7 @@ Guides including PDFs, clinical handouts, article pages, and forum posts with va
 
 **Embedding model:** all-MiniLM-L6-v2 via sentence-transformers
 
-**Top-k:** 6
+**Top-k:** 5 (starting value per milestone guidance; to be tuned after evaluation)
 
 **Production tradeoff reflection:**
 all-MiniLM-L6-v2 is a fast, cost-effective embedding model with strong semantic relevance for mixed web and PDF text. If cost were not a constraint, I would consider a larger model with better domain accuracy and longer context support to improve retrieval quality for medical and nutrition terminology, while balancing latency and inference cost for user-facing queries.
@@ -106,6 +108,34 @@ all-MiniLM-L6-v2 is a fast, cost-effective embedding model with strong semantic 
      You can use ASCII art, a Mermaid diagram, or embed a sketch as an image.
      You'll use this diagram as context when prompting AI tools to implement each stage. -->
 
+```
+ ┌──────────────────────────────────────────────────────────────────────────────┐
+ │ STAGE 1 — Document Ingestion                                  rag/ingest.py    │
+ │   documents/*.txt (13 sources: PDFs, articles, Reddit threads)                 │
+ │   load_documents() → parse_header() (Source:/URL: → metadata) → clean_text()   │
+ │   ↓ list[Document]                                                             │
+ ├──────────────────────────────────────────────────────────────────────────────┤
+ │ STAGE 2 — Chunking                                            rag/chunk.py     │
+ │   chunk_documents(): boundary-aware split, ~1000 chars / 200 overlap           │
+ │   ↓ list[Chunk]  (chunk_id, text, source, url, doc_id, chunk_index)            │
+ │   → persisted to chunks.json  (run_ingest.py)                                  │
+ ├──────────────────────────────────────────────────────────────────────────────┤
+ │ STAGE 3 — Embedding + Vector Store          rag/embed.py  (run_embed.py)       │
+ │   SentenceTransformer("all-MiniLM-L6-v2")  embeds each chunk's text            │
+ │   → ChromaDB persistent collection "endo_chunks" (cosine)                      │
+ │      stores: id=chunk_id, document=text, embedding, metadata={source,url,…}    │
+ │   ↓ chroma_db/ on disk                                                         │
+ ├──────────────────────────────────────────────────────────────────────────────┤
+ │ STAGE 4 — Retrieval                                          rag/retrieve.py   │
+ │   retrieve(query, k=6): embed query (same model) → collection.query()          │
+ │   ↓ top-6 chunks with text + source/url metadata + distance                    │
+ ├──────────────────────────────────────────────────────────────────────────────┤
+ │ STAGE 5 — Generation                        rag/generate.py  (Milestone 5)     │
+ │   build grounded prompt(query + retrieved chunks) → Groq LLM → cited answer    │
+ │   exposed via a CLI / Streamlit interface                                       │
+ └──────────────────────────────────────────────────────────────────────────────┘
+```
+
 ---
 
 ## AI Tool Plan
@@ -122,6 +152,21 @@ all-MiniLM-L6-v2 is a fast, cost-effective embedding model with strong semantic 
 
 **Milestone 3 — Ingestion and chunking:**
 
+- **Tool:** Claude (Claude Code in the terminal).
+- **Input I'll give it:** This planning.md's Documents table and Chunking Strategy section, plus a description of the `/documents` folder (13 pre-extracted `.txt` files, each beginning with a `Source:` line and `URL:` line as a header). I'll tell it the files are already plain text — PDFs were extracted with pypdf, Reddit threads pulled via the PullPush/Arctic-Shift archive APIs — so ingestion only needs to read `.txt`, not parse PDFs or fetch the web.
+- **What I expect it to produce:** A `load_documents()` that reads every `.txt` in `/documents` and captures the `Source:`/`URL:` header lines as metadata, and a `chunk_text()` that splits each document into **2,500-character** chunks with **500-character overlap**, returning a list of `{text, source, url, chunk_index}` records.
+- **How I'll verify:** Run it on the corpus and confirm: every file is loaded (13 docs), no chunk exceeds 2,500 chars, consecutive chunks share ~500 chars of overlap, and metadata is attached to every chunk. Spot-check that a long source (e.g. the 28-page SSM booklet) produces many chunks and a short one (Cleveland Clinic) produces few.
+
 **Milestone 4 — Embedding and retrieval:**
 
+- **Tool:** Claude.
+- **Input I'll give it:** This planning.md's Retrieval Approach section (embedding model `all-MiniLM-L6-v2` via sentence-transformers, **top-k = 6**) and the chunk record shape from Milestone 3.
+- **What I expect it to produce:** An `embed_chunks()` that encodes all chunk texts with `all-MiniLM-L6-v2` and stores vectors + metadata in a vector store (e.g. a simple FAISS/NumPy index or Chroma), plus a `retrieve(query, k=6)` that embeds the query and returns the 6 most similar chunks **with their source/url metadata** so answers can be attributed.
+- **How I'll verify:** Run each of my 5 evaluation questions through `retrieve()` and confirm the returned chunks are on-topic and come from the sources I'd expect (e.g. Q4 about evidence type should surface both Reddit and clinical/PMC chunks). Confirm exactly 6 chunks come back and each carries its source attribution.
+
 **Milestone 5 — Generation and interface:**
+
+- **Tool:** Claude to write the code; **Groq `llama-3.3-70b-versatile`** (free-tier, OpenAI-compatible, key from `.env`) as the answer-generation model.
+- **Input I'll give it:** This planning.md's Evaluation Plan (the 5 test questions + expected answers) and Anticipated Challenges (mixed evidence quality, source attribution). I'll have it write a prompt template that injects the retrieved chunks as context, instructs the model to answer **only** from the provided context, cite sources, distinguish anecdotal (Reddit) from clinical/peer-reviewed evidence, and include the medical-disclaimer behavior described in evaluation Q5.
+- **What I expect it to produce:** An `ask(query)` (`rag/generate.py`) that ties retrieval → grounded prompt → Groq response and returns `{answer, sources}`, where the source list is built programmatically from chunk metadata; plus a Gradio interface (`app.py`) where a user types a question and sees the answer with its cited sources.
+- **How I'll verify:** Run the evaluation questions end-to-end and compare each response against its expected answer; confirm answers cite sources, that a medical-advice question triggers the disclaimer and a "consult a healthcare provider" message, that an out-of-scope question returns "I don't have enough information on that.", and that the system doesn't fabricate claims absent from the retrieved chunks.
